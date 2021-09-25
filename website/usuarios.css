@@ -1,4 +1,15 @@
-.Formulario{
-margin-bottom: 30 px;
-border-bottom-color: darkslategray;
+form h1{
+text-align: center;
+}
+
+form input{
+margin: 10px 10px;
+}
+
+form label option{
+margin: 20px 100px;
+}
+
+form select{
+margin: 10px; 
 }
