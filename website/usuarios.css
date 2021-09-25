@@ -1,5 +1,6 @@
 form h1{
 text-align: center;
+border-collapse: collapse;
 }
 
 form input{
@@ -12,4 +13,8 @@ margin: 20px 100px;
 
 form select{
 margin: 10px; 
+}
+
+table{
+text-align: right;
 }
