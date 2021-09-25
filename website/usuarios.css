@@ -1,0 +1,10 @@
+div{
+float: left;
+margin-right:10px;
+width: 100px;
+}
+
+div.campos{
+width: 100;
+margin-bottom: 10px;
+}
