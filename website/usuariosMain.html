@@ -58,9 +58,10 @@
   <form>
     <h1> FORMULARIO </h1>
     <div>
-      <label> Correo electrónico:</label> 
-        <input type"text" name="correos"> 
-        <input type="submit" name="Buscar"> </input></div>
+      <label for="email">Correo electrónico:</label> 
+      <input type="email" id="email"
+      pattern=".+@globex\.com" size="30" required>
+  
 
     <div>
       <label> Estado:</label> 
@@ -80,12 +81,18 @@
   <table>
     <thead>
       <tr>
-        <th>Nombres</th><th>Apellidos</th><th>Correo electrónico</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Correo electrónico</th>
       </tr>
     </thead> 
-    <tr>
-        <td> Pepito</td><td> Perez</td><td> pepe@gmail.com</td>
-    </tr>
+    <body>
+      <tr>
+        <th scope="row">Pepito</th>
+        <td> Perez</td>
+        <td> pepe@gmail.com</td>
+      </tr>
+    </body>
   </table>
 
   <div>
