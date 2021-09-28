@@ -1,9 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-ES" lang="es-ES">
 <head>
 <title>[in] Business</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="style.css" rel="stylesheet" type="text/css" />
+<link href="./style.css" rel="stylesheet" type="text/css" />
+<link href="./usuarios.css" rel="stylesheet" type="text/css" />
+<link href="./usuarios_.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 <!--
 .style1 {color: #7DC4AD}
@@ -17,15 +19,21 @@
     <div class="menu">
       <a href="principal.html">Principal</a>
       <a href="ventasMain.html">Gestión de Ventas</a>
-      <a href="vendedoresMain.html">Gestión de Productos</a>
+      <a href="vendedoresMain.html">Gestión de Vendedores</a>
       <a href="usuariosMain.html">Gestión de Usuarios & Roles</a>
       <a href="index.html">Salida</a>
     </div>
+	
+	
+	
+	
     <!-- The header -->
     <div class="header"><img alt="" style="float:right; " src="images/logo.png" width="15%" />
       <h1>[<span class="style1">L</span>] Luxor Mifflin Inc.</h1>
       <div class="clearfix"></div>
     </div>
+	
+	
     <!-- the news bar, or right hand column -->
     <div class="newsbar">
       <h1>Need help?</h1>
@@ -40,9 +48,13 @@
           you could leave the copyright info intact, so that others can find
           the oswd site (and also me). Other than that, feel free to change
           colours, layout and any other elements!</p>
+		  
+		  
       </div>
-      <h1>Links de Interés</h1>
+      <h1>Links</h1>
       <div class="p2">
+	  
+	  
         <ul>
           <li><a href="http://all-free-download.com/free-website-templates/">OSWD.org</a></li>
           <li><a href="http://all-free-download.com/free-website-templates/">NOW:design</a></li>
@@ -53,57 +65,118 @@
     </div>
     <!-- main content area-->
     <div class="content">
-      <h1>[L] GESTIÓN DE USUARIOS Y ROLES </h1>
-      
-  <form>
-    <h1> FORMULARIO </h1>
-    <div>
-      <label for="email">Correo electrónico:</label> 
-      <input type="email" id="email"
-      pattern=".+@globex\.com" size="30" required>
-  
-    <div>
-      <label> Estado:</label> 
-      <select name"Estado">
-        <option>Pendiente</option>
-        <option>Autorizado</option>
-        <option>No Autorizado</option></select></div>
-      
-    <div> 
-      <label> Rol asignado:</label> 
-      <select name"Rol asignado">
-        <option>Vendedor</option>
-        <option>Administrador</option></select></div>    
+      <h1>[L] Gestión de Usuarios</h1>
+		
+           <br>
+       <!--LO NUEVO -->   
 
- 
-  <link rel="stylesheet" href="/website/usuarios.css" 
-  
+       <div class="form-group">
+            <label for="inputEmail">Correo electronico</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Ingrese su email"/><button>buscar</button>
+      </div>
+        
+     
+
+    
+<div class="contenedor">
+    <div class="content">
+     
+    <div class="tabla">
+   
   <table>
     <thead>
       <tr>
-        <th scope="col">Nombres</th>
-        <th scope="col">Apellidos</th>
-        <th scope="col">Correo electrónico</th>
+        <th scope="col"> <br>  Nombres  </th>
+        <th scope="col">  <br> Apellidos </th>
+        <th scope="col">  <br> Correo electrónico </th>
       </tr>
     </thead> 
-    <body>
+    <tbody>
       <tr>
-        <th scope="row">Pepito</th>
-        <td> Perez</td>
-        <td> pepe@gmail.com</td>
+        <td> Pepito </td>
+        <td> Perez </td>
+        <td> pepe@gmail.com </td>
       </tr>
-    </body>
+    </tbody>
   </table>
+  <br>
+   <hr>
 
-  <div>
-  <input type="submit" name="Guardar"> 
-  </form>
+   <br>
+  
+</tr>
+    </div>
+        
+    <div class="tabla2"> 
+       
+  <tr>
+   <td>
+    <b style="border: ridge #943737 2px; border-radius: 8%">Rol asignado:</b>
+   </td>
+</tr>
 
+    <select name="color">
+     <option>select</option>
+     <option>Vendedor</option>
+     <option>administrador</option>
+   </select>
+        
+    <br>    
+        
+        
+    </div> 
+        
+        
+    <div class="tabla3"> 
+        <br>
+  <tr>
+   <td>
+    <b style="border: ridge #9b9b9b 1px; border-radius: 8%">Estado:</b>
+   </td>
+</tr>
+    <select name="color">
+     <option>select</option>
+     <option>Pendiente</option>
+     <option>Autorizado</option>
+     <option>No Autorizado</option>
+   </select>
+        
+        
+    </div>
+        
+    <br><br>
+   
+    <div class="ventana" id="vent"><br>su información se a guardado correctamente<br><br><a href="usuariosMain.html"><button>Aceptar</button></a></div>
+        
+        
+     <a href="javascript:abrir()"><button>Guardar</button></a>
+        
+    
+        
+        
+    </div>
+        
+    </div>
     <div class="clearfix"></div>
     <!-- footer, copyright area - please do not remove!-->
     <div class="footer">&copy; 2005, diseno original de <a href="http://www.now-design.co.uk/">NOW:design</a> |
       Tomada para fines educativos de oswd.org </div>
   </div>
 </div>
-<div align=center>Plantilla original obtenida de <a href='http://all-free-download.com/free-website-templates/'>free website templates</a></div></body>
+    
+ </div>
+    
+   
+    
+<div align=center>Plantilla original obtenida de <a href='http://all-free-download.com/free-website-templates/'>free website templates</a></div>
+    
+ <script>
+    function abrir() {
+        document.getElementById("vent").style.display="block";
+    }
+    </script>
+</body>
 </html>
+© 2021 GitHub, Inc.
+Terms
+Priv
