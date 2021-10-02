@@ -57,32 +57,152 @@
       <p>
 
 
-      <div class="globdal-container">
-        <div class="card login-form">
+ 
           <div class="card-body">
-            <div class="card-text">
+            <div class="buscar-cliente">
               <!--
               <div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div> -->
               <form>
                 <!-- to error: add class "has-danger" -->
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <label for="exampleInputEmail1">Tipo Identificación</label>
+    
+                  <select class="form-control form-control-sm" id="tipoid" aria-describedby="emailHelp">
+                        <option value="CC">Cédula de Ciudadanía
+                        <option value="Pasaporte">Pasaporte
+                        <option value="CE">Cédula de Extranjería
+                  </select>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
-                  <input type="password" class="form-control form-control-sm" id="exampleInputPassword1">
+                  <label for="exampleInputPassword1">Número Documento</label>
+                  <input type="text" class="form-control form-control-sm" id="exampleInputPassword1">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                <button type="submit" class="btn btn-primary btn-block">Buscar</button>
+                
+              </form>
+            </div>
+
+            <div class="ingresar-venta">
+              <!--
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div> -->
+              <form>
+                <!-- to error: add class "has-danger" -->
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Tipo Identificación</label>
+                  <select class="form-control form-control-sm" id="tipoid" aria-describedby="emailHelp">
+                        <option value="CC">Cédula de Ciudadanía
+                        <option value="Pasaporte">Pasaporte
+                        <option value="CE">Cédula de Extranjería
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Número Documento</label>
+                  <input type="text" class="form-control form-control-sm" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Nombre</label>
+                  <input type="text" class="form-control form-control-sm" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Apellido</label>
+                  <input type="text" class="form-control form-control-sm" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Email</label>
+                  <input type="text" class="form-control form-control-sm" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Teléfono</label>
+                  <input type="text" class="form-control form-control-sm" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Dirección</label>
+                  <input type="text" class="form-control form-control-sm" id="exampleInputPassword1">
+                </div>
+                <br>
+                <div class="form-group">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Seleccione Producto</label>
+                      <select class="form-control form-control-sm" id="tipoid" aria-describedby="emailHelp">
+                            <option value="CC">Seleccionar
+                            <option value="CC">Lapiz
+                            <option value="Pasaporte">Cuaderno
+                            <option value="CE">Bolígrafo
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Cantidad</label>
+                        <input type="text" class="form-control form-control-sm" id="exampleInputPassword1">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Agregar</button>
+                    <table width="50%" border="1">
+  <caption>Listado de Productos</caption>
+  <colgroup>
+    <col width="20%" />
+    <col width="20%" />
+    <col width="30%" />
+    <col width="30%" />
+    <col width="30%" />
+    <col width="30%" />
+  </colgroup>
+  <thead>
+
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Cantidad</th>
+      <th>Valor Unitario</th>
+      <th>Valor Sub-Total</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Total</td>
+      <td>$150000</td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <td>LP023</td>
+      <td>Lapiz</td>
+      <td>Berol No 2</td>
+      <td>50</td>
+      <td>$1000</td>
+      <td>$50000</td>
+    </tr>
+    <tr>
+      <td>CP129</td>
+      <td>Cuardeno</td>
+      <td>JeanBook 100h</td>
+      <td>20</td>
+      <td>$2500</td>
+      <td>$50000</td>
+    </tr>
+    <tr>
+      <td>ET834</td>
+      <td>Bolígrafo</td>
+      <td>Bic cristal rojo</td>
+      <td>100</td>
+      <td>$500</td>
+      <td>$50000</td>
+    </tr>
+  </tbody>
+</table>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                <button type="submit" class="btn btn-primary btn-block">Limpiar</button>
                 
               </form>
             </div>
           </div>
-        </div>
-      </div>
-
-
+ 
 
 
 
