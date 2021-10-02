@@ -1,0 +1,18 @@
+
+
+table { border: 1px solid #7DC4AD(15, 100, 93);
+width: 500%;
+background-color:#7DC4AD;
+}
+td,th{ border: 1px solid;
+padding: 2px;
+}
+th{background-color: #7DC4AD;
+color: black;
+font-size:12pt;
+font-family: 'Trebuchet MS';
+
+}
+
+
+
