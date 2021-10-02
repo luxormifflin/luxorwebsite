@@ -158,13 +158,6 @@ a:hover {
 }
 
 
-
-
-
-
-
-
-
 /*
 Estilos de los formularios
 */
@@ -209,4 +202,183 @@ form{
 	margin-bottom:-30px;
 	font-size: 13px;
 	margin-top:20px;
+}
+
+tablita { border: 1px solid #7DC4AD(15, 100, 93);
+	width: 500%;
+	background-color:#7DC4AD;
+	}
+	td,th{ border: 1px solid;
+	padding: 2px;
+	}
+	th{background-color: #7DC4AD;
+	color: white;
+	font-size:12pt;
+	font-family: 'Trebuchet MS';
+	
+	}
+
+
+	.tabla{
+		width: 20%;
+	}
+	
+	.tabla2{
+		width: 100%;
+	}
+	
+	.tabla3{
+		width: 100%;
+	}
+	
+	.ventana{
+		border: solid gray 1px;
+		text-align: center;
+		background: white;
+		min-height: 120px;
+		max-width: 250px;
+		position: absolute;
+		left: 40%;
+		top: 35%;
+		display: none;
+	}
+
+.label1 {
+		margin-right: 50px;
+}
+.input1{
+	width: 350px;
+	border-radius: 5px;
+	margin-bottom: 2px;
+	height: 25px;
+}
+.botoncito{
+	/* background-image: url("./images/Google.png"); */
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 350px;
+	height: 35px;
+	font: 700 1em Tahoma,Arial,Verdana ;
+	border: 1px solid #535c57;
+	cursor: pointer;
+}
+.logito{
+	width: 40px;
+	height: 30px;
+	float: left;
+	margin-left: 50px;
+}
+.pastel{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 350px;
+	height: 35px;
+	font: 700 1em Tahoma,Arial,Verdana ;
+	border: 1px solid #535c57;
+	cursor: pointer;
+	background-color: #7DC4AD;
+	color: white; 	 
+}
+.two-fields{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.cajita-login {
+	background-color: #FFFFFF;
+	margin-left: auto; 
+	margin-right: auto; 
+	padding: 20px; 
+	text-align: center; 
+	width: 90%;
+}
+.style1 {color: #7DC4AD}
+
+/*Estilos del input fredy*/
+.content .controls{
+	width: 28%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	border: 2px solid #7DC4AD;
+	border-radius: 8px;
+	color: white;
+}
+
+/*Estilos del boton fredy*/
+.content .botons{
+	width: 10%;
+    background: #7DC4AD;
+    border: none;
+    padding: 8px;
+    color: white;
+    margin: 16px 0;
+	border-radius: 8px;
+    font-size: 16px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+/*Estilos de tabla fredy*/
+.content table, th, td{
+	table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #7DC4AD;
+}
+
+table thead {
+	color: #fff;
+	background-color: #7DC4AD;
+    }
+
+/*Estilos de productosIngresar fredy*/
+    .contentIng h1 {
+	font-size: 110%;
+	margin: 10px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	border-bottom: 2px solid #7DC4AD;
+}  
+
+.contentIng .controls{
+	width: 28%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	border: 2px solid #7DC4AD;
+	border-radius: 8px;
+}
+
+.contentIng .botons{
+	width: 10%;
+    background: #7DC4AD;
+    border: none;
+    padding: 8px;
+    color: white;
+    margin: 16px 0;
+	border-radius: 8px;
+    font-size: 16px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.contentIng .estado{
+	width: 28%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	border: 2px solid #7DC4AD;
+	border-radius: 8px;
+}
+
+
+.hearder-index {
+	background-color: #ffffff;
+	padding: 10px; 
+	margin-top:3px;
+	height: 95px;
+	text-align: center;
+	width: 100%;
+}
+.centrar{
+	text-align: center;
+	width: 100%;
+	color: #7DC4AD;
 }
