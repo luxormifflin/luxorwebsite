@@ -314,7 +314,7 @@ form{
 	width: 350px;
 	height: 35px;
 	font: 700 1em Tahoma,Arial,Verdana ;
-	border: 1px solid #0074A5;
+	border: 1px solid #535c57;
 	cursor: pointer;
 }
 .logito{
@@ -329,7 +329,7 @@ form{
 	width: 350px;
 	height: 35px;
 	font: 700 1em Tahoma,Arial,Verdana ;
-	border: 1px solid #0074A5;
+	border: 1px solid #535c57;
 	cursor: pointer;
 	background-color: #7DC4AD;
 	color: white; 	 
@@ -338,6 +338,15 @@ form{
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
+.cajita-login {
+	background-color: #FFFFFF;
+	margin-left: auto; 
+	margin-right: auto; 
+	padding: 20px; 
+	text-align: center; 
+	width: 90%;
+}
+.style1 {color: #7DC4AD}
 
 
 
