@@ -158,13 +158,6 @@ a:hover {
 }
 
 
-
-
-
-
-
-
-
 /*
 Estilos de los formularios
 */
@@ -211,43 +204,6 @@ form{
 	margin-top:20px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 table { border: 1px solid #7DC4AD(15, 100, 93);
 	width: 500%;
 	background-color:#7DC4AD;
@@ -286,17 +242,6 @@ table { border: 1px solid #7DC4AD(15, 100, 93);
 		top: 35%;
 		display: none;
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 .label1 {
 		margin-right: 50px;
@@ -348,104 +293,79 @@ table { border: 1px solid #7DC4AD(15, 100, 93);
 }
 .style1 {color: #7DC4AD}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*Estilos del input fredy*/
+.content .controls{
+	width: 28%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	border: 2px solid #7DC4AD;
+	border-radius: 8px;
+}
+
+/*Estilos del boton fredy*/
+.content .botons{
+	width: 10%;
+    background: #7DC4AD;
+    border: none;
+    padding: 8px;
+    color: white;
+    margin: 16px 0;
+	border-radius: 8px;
+    font-size: 16px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+/*Estilos de tabla fredy*/
+.content table, th, td{
+	table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #7DC4AD;
+}
+
+table thead {
+	color: #fff;
+	background-color: #7DC4AD;
+    }
+
+/*Estilos de productosIngresar fredy*/
+    .contentIng h1 {
+	font-size: 110%;
+	margin: 10px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	border-bottom: 2px solid #7DC4AD;
+}  
+
+.contentIng .controls{
+	width: 28%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	border: 2px solid #7DC4AD;
+	border-radius: 8px;
+}
+
+.contentIng .botons{
+	width: 10%;
+    background: #7DC4AD;
+    border: none;
+    padding: 8px;
+    color: white;
+    margin: 16px 0;
+	border-radius: 8px;
+    font-size: 16px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.contentIng .estado{
+	width: 28%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+	border: 2px solid #7DC4AD;
+	border-radius: 8px;
+}
 
 
 .hearder-index {
