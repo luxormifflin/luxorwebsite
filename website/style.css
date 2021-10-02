@@ -158,13 +158,6 @@ a:hover {
 }
 
 
-
-
-
-
-
-
-
 /*
 Estilos de los formularios
 */
@@ -211,92 +204,44 @@ form{
 	margin-top:20px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+table { border: 1px solid #7DC4AD(15, 100, 93);
+	width: 500%;
+	background-color:#7DC4AD;
+	}
+	td,th{ border: 1px solid;
+	padding: 2px;
+	}
+	th{background-color: #7DC4AD;
+	color: black;
+	font-size:12pt;
+	font-family: 'Trebuchet MS';
+	
+	}
+
+
+	.tabla{
+		width: 20%;
+	}
+	
+	.tabla2{
+		width: 100%;
+	}
+	
+	.tabla3{
+		width: 100%;
+	}
+	
+	.ventana{
+		border: solid gray 1px;
+		text-align: center;
+		background: white;
+		min-height: 120px;
+		max-width: 250px;
+		position: absolute;
+		left: 40%;
+		top: 35%;
+		display: none;
+	}
 
 .label1 {
 		margin-right: 50px;
@@ -423,31 +368,6 @@ table thead {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .hearder-index {
 	background-color: #ffffff;
 	padding: 10px; 
@@ -461,4 +381,3 @@ table thead {
 	width: 100%;
 	color: #7DC4AD;
 }
-
