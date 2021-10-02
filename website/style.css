@@ -204,7 +204,7 @@ form{
 	margin-top:20px;
 }
 
-table { border: 1px solid #7DC4AD(15, 100, 93);
+tablita { border: 1px solid #7DC4AD(15, 100, 93);
 	width: 500%;
 	background-color:#7DC4AD;
 	}
@@ -212,7 +212,7 @@ table { border: 1px solid #7DC4AD(15, 100, 93);
 	padding: 2px;
 	}
 	th{background-color: #7DC4AD;
-	color: black;
+	color: white;
 	font-size:12pt;
 	font-family: 'Trebuchet MS';
 	
@@ -301,6 +301,7 @@ table { border: 1px solid #7DC4AD(15, 100, 93);
     box-sizing: border-box;
 	border: 2px solid #7DC4AD;
 	border-radius: 8px;
+	color: white;
 }
 
 /*Estilos del boton fredy*/
