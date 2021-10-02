@@ -298,55 +298,55 @@ form{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.label1 {
+		margin-right: 50px;
+}
+.input1{
+	width: 350px;
+	border-radius: 5px;
+	margin-bottom: 2px;
+	height: 25px;
+}
+.botoncito{
+	/* background-image: url("./images/Google.png"); */
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 350px;
+	height: 35px;
+	font: 700 1em Tahoma,Arial,Verdana ;
+	border: 1px solid #535c57;
+	cursor: pointer;
+}
+.logito{
+	width: 40px;
+	height: 30px;
+	float: left;
+	margin-left: 50px;
+}
+.pastel{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 350px;
+	height: 35px;
+	font: 700 1em Tahoma,Arial,Verdana ;
+	border: 1px solid #535c57;
+	cursor: pointer;
+	background-color: #7DC4AD;
+	color: white; 	 
+}
+.two-fields{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.cajita-login {
+	background-color: #FFFFFF;
+	margin-left: auto; 
+	margin-right: auto; 
+	padding: 20px; 
+	text-align: center; 
+	width: 90%;
+}
+.style1 {color: #7DC4AD}
 
 /*Estilos del input fredy*/
 .content .controls{
@@ -421,3 +421,44 @@ table thead {
 	border: 2px solid #7DC4AD;
 	border-radius: 8px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hearder-index {
+	background-color: #ffffff;
+	padding: 10px; 
+	margin-top:3px;
+	height: 95px;
+	text-align: center;
+	width: 100%;
+}
+.centrar{
+	text-align: center;
+	width: 100%;
+	color: #7DC4AD;
+}
+
