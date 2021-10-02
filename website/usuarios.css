@@ -5,12 +5,12 @@ width: 500%;
 background-color:#7DC4AD;
 }
 td,th{ border: 1px solid;
-padding: 3px;
+padding: 2px;
 }
-th:{background-color:black;
-color: white;
-font-size:24pt;
-font-family: ALGERIAN;
+th{background-color: #7DC4AD;
+color: black;
+font-size:12pt;
+font-family: 'Trebuchet MS';
 
 }
 
