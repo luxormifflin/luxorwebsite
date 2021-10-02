@@ -5,27 +5,27 @@
     <meta charset="UTF-8" /> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="style.css" rel="stylesheet" type="text/css" />
     <title>login página web</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class='flex flex-col w-full justify-center items-center'>
+    <div class="all">
       <form >
-        <img src="./logo.png" alt="logo de Luxor"/>
+        <img src="./images/logo.png" alt="logo de Luxor"/>
         <h1>
             Inicia sesión en tu cuenta
         </h1>
         <div>
             <label>
-              <input type='email' placeholder='ejemplo@gmail.com' required/>
+              <input type='email' placeholder='ejemplo@gmail.com' required class="input1"/>
             </label>
         </div>
         <div>
             <label>
-                <input type='password' required/>
+                <input type='password' required class="input1"/>
             </label>
         </div>
-        <div class='flex justify-between'>
+        <!-- <div class="recuerdame">
             <div>
                 <label htmlFor='recuerdame'>
                     <input type='checkbox' name='recuerdame'/>
@@ -35,17 +35,38 @@
             <div> 
                 <Link to='/'>¿Olvidaste tu Contraseña?</Link>
             </div>
+        </div> -->
+        <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-md-3">
+                <div class="form-group two-fields">
+                    <div class="input-group">
+                        
+                            <label htmlFor='recuerdame' class="label1">
+                                <input type='checkbox' name='recuerdame'/>
+                                Recuérdame
+                            </label>
+                                                
+                            <Link to='/'>¿Olvidaste tu Contraseña?</Link>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
         <div> 
             <Link to='/admin'>
-                <button type='submit'> Iniciar Sesion</button>
+                <button class="pastel" type='submit'> Iniciar Sesión</button>
             </Link>
         </div>
         <div>O</div>
         <div>
-          <button>Continua con google</button>
+          <button class="botoncito" > 
+              <img  src="./images/Google.png" class="logito"/> 
+              Continúa con google
+            </button>
         </div>
 
       </form>
     </div>
+  </body>
 </html>
