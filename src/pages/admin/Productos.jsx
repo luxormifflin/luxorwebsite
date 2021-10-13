@@ -394,7 +394,7 @@ const FormularioCreacionProductos = ({ setMostrarTabla, listaProductos, setProdu
                         required
                     />
                 </label>
-                <label className='flex flex-col' htmlFor='marca'>
+                <label className='flex flex-col' htmlFor='estado'>
                     Dispinibilidad del Producto
                     <select
                         className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
