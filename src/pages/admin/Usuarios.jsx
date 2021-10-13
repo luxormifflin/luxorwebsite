@@ -186,9 +186,8 @@ const TablaVehiculos = ({ vehiculos, setVehiculos, setVehiculosTabla }) => {
                         defaultValue={0}
                     >
                         <option hidden selected>Selecciona un rol</option>
-                        <option value="Pendiente">Pendiente</option>
-                        <option value="Autorizado">Autorizado</option>
-                        <option value="NoAutorizado">No Autorizado</option>
+                        <option value="Vendedor">Vendedor</option>
+                        <option value="Administrador">Administrador</option>
                     </select>
                 </label>
                 </td>
@@ -202,8 +201,9 @@ const TablaVehiculos = ({ vehiculos, setVehiculos, setVehiculosTabla }) => {
                         defaultValue={0}
                     >
                         <option hidden selected>Selecciona un estado</option>
-                        <option value="Disponible">Disponible</option>
-                        <option value="No Disponible">No Disponible</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Autorizado">Autorizado</option>
+                        <option value="NoAutorizado">No Autorizado</option>
                     </select>
                 </label>
                 </td>
