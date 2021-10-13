@@ -8,14 +8,18 @@ import PublicLayout from 'layouts/PublicLayout';
 import PrivateLayout from 'layouts/PrivateLayout';
 import AuthLayout from 'layouts/AuthLayout';
 import Login from 'pages/auth/Login';
+import Usuarios from 'pages/admin/Usuarios';
 
 function App() {
     return (
         <Router>
             <Switch>
-                <Route path={['/admin', '/admin/productos']}>
+                <Route path={['/admin', '/admin/productos','/admin/usuarios']}>
                     <PrivateLayout>
                         <Switch>
+                            <Route path='/admin/usuarios'>
+                                <Usuarios/>
+                            </Route>
                             <Route path='/admin/productos'>
                                 <Productos/>
                             </Route>

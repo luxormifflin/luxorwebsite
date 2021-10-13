@@ -12,3 +12,5 @@ export const obtenerProductos = async (setProductos, setEjecutarConsulta) => {
         });
     setEjecutarConsulta(false);
 };
+
+
