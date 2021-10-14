@@ -1,6 +1,7 @@
 import Registro from 'pages/auth/Registro';
 import Admin from 'pages/admin/Index';
 import Productos from 'pages/admin/Productos';
+import Usuarios from 'pages/admin/Usuarios';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import 'styles/styles.css';
 import Index from 'pages/Index';
@@ -13,9 +14,12 @@ function App() {
     return (
         <Router>
             <Switch>
-                <Route path={['/admin', '/admin/productos']}>
+                <Route path={['/admin', '/admin/productos', '/admin/usuarios']}>
                     <PrivateLayout>
                         <Switch>
+                            <Route path='/admin/usuarios'>
+                                <Usuarios/>
+                            </Route>
                             <Route path='/admin/productos'>
                                 <Productos/>
                             </Route>

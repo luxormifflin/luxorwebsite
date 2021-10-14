@@ -12,3 +12,10 @@ export const obtenerProductos = async (setProductos, setEjecutarConsulta) => {
         });
     setEjecutarConsulta(false);
 };
+
+//api usuarios xD
+
+export const obtenerUsuarios = async (successCallback, errorCallback) => {
+    const options = { method: 'GET', url: 'http://localhost:5000/usuarios/' };
+    await axios.request(options).then(successCallback).catch(errorCallback);
+};  
