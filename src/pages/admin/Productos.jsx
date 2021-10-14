@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
-import axios from 'axios';
 import {nanoid} from 'nanoid';
 import {Dialog, Tooltip} from '@material-ui/core';
-import { obtenerProductos } from 'utils/api';
+import { obtenerProductos, crearProducto, editarProducto, eliminarProducto } from 'utils/api';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 const Productos = () => {
     const [mostrarTabla, setMostrarTabla] = useState(true);
@@ -14,13 +12,22 @@ const Productos = () => {
     const [colorBoton, setColorBoton] = useState('indigo');
     const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
 
-
     useEffect(() => {
         console.log('consulta', ejecutarConsulta);
         if (ejecutarConsulta) {
-            obtenerProductos(setProductos, setEjecutarConsulta);
-        }
-    }, [ejecutarConsulta]);
+            obtenerProductos(
+                (response) => {
+                    console.log('la respuesta que se recibio fue', response);
+                    setProductos(response.data);
+                    setEjecutarConsulta(false);
+        },
+            (error) => {
+                console.log('salió un error', error);
+            }
+        );
+        
+    } 
+}, [ejecutarConsulta]);
 
     useEffect(() => {
         //obtener lista de productos desde el backend//
@@ -28,7 +35,6 @@ const Productos = () => {
             setEjecutarConsulta(true);
         }
     }, [mostrarTabla]);
-
     useEffect(() => {
         if (mostrarTabla) {
             setTextoBoton('Crear Nuevo Producto');
@@ -37,7 +43,6 @@ const Productos = () => {
             setTextoBoton('Mostrar todos los Productos');
             setColorBoton("gray")
         }
-
     }, [mostrarTabla])
 
     return (
@@ -68,11 +73,9 @@ const Productos = () => {
         </div>
     );
 };
-
 const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
     const [busqueda, setBusqueda] = useState('');
     const [productosFiltrados, setProductosFiltrados] = useState(listaProductos);
-
     useEffect(() => {
         setProductosFiltrados(
             listaProductos.filter((elemento) => {
@@ -108,7 +111,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
                             return (
                                 <FilaProducto
                                     key={nanoid()}
-                                    producto={Productos}
+                                    producto={Producto}
                                     setEjecutarConsulta={setEjecutarConsulta}
                                 />
                             );
@@ -146,50 +149,44 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
     });
 
     const actualizarProducto = async () => {
-        console.log(infoNuevoProducto);
         //enviar la info al backend
-        const options = {
-            method: 'PATCH',
-            url: `http://localhost:5000/productos/${producto._id}/`,
-            headers: { 'Content-Type': 'application/json' },
-            data: { ...infoNuevoProducto },
-        };
 
-        await axios
-            .request(options)
-            .then(function (response) {
+        await editarProducto(
+            producto._id,
+            {
+                codigo: infoNuevoProducto.codigo,
+                nombre: infoNuevoProducto.nombre,
+                cantidad: infoNuevoProducto.cantidad,
+                valor: infoNuevoProducto.valor,
+                estado: infoNuevoProducto.estado,
+            },
+            (response) => {
                 console.log(response.data);
                 toast.success('Producto modificado con éxito');
                 setEdit(false);
                 setEjecutarConsulta(true);
-            })
-            .catch(function (error) {
+            },
+            (error) => {
                 toast.error('Error modificando el producto');
                 console.error(error);
-            });
+            }
+        );
     };
-
-    const eliminarProducto = async () => {
-        const options = {
-            method: 'DELETE',
-            url: 'http://localhost:5000/productos/eliminar/',
-            headers: { 'Content-Type': 'application/json' },
-            data: { id: producto._id },
-        };
-
-        await axios
-            .request(options)
-            .then(function (response) {
+    const deleteProduct = async () => {
+        await eliminarProducto(
+            producto._id,
+            (response) =>{
                 console.log(response.data);
-                toast.success('Producto eliminado con éxito');
+                toast.success('producto eliminado con éxito');
                 setEjecutarConsulta(true);
-            })
-            .catch(function (error) {
+            },
+            (error) => {
                 console.error(error);
                 toast.error('Error eliminando el producto');
-            });
+            }
+        );
         setOpenDialog(false);
-    };
+        };
 
     return (
         <tr>
@@ -296,7 +293,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
                         </h1>
                         <div className='flex w-full items-center justify-center my-4'>
                             <button
-                                onClick={() => eliminarProducto()}
+                                onClick={() => deleteProduct()}
                                 className='mx-2 px-4 py-2 bg-green-500 text-white hover:bg-green-700 rounded-md shadow-md'
                             >
                                 Sí
@@ -314,10 +311,8 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
         </tr>
     );
 };
-
 const FormularioCreacionProductos = ({ setMostrarTabla, listaProductos, setProductos }) => {
     const form = useRef(null);
-
     const submitForm = async (e) => {
         e.preventDefault();
         const fd = new FormData(form.current);
@@ -327,23 +322,23 @@ const FormularioCreacionProductos = ({ setMostrarTabla, listaProductos, setProdu
             nuevoProducto[key] = value;
         });
 
-        const options = {
-            method: 'POST',
-            url: 'http://localhost:5000/productos/nuevo/',
-            headers: { 'Content-Type': 'application/json' },
-            data: { codigo: nuevoProducto.codigo, nombre: nuevoProducto.nombre, cantidad: nuevoProducto.cantidad, valor: nuevoProducto.valor, estado:nuevoProducto.estado},
-        };
-
-        await axios
-            .request(options)
-            .then(function (response) {
+        await crearProducto(
+            {
+                codigo: nuevoProducto.codigo,
+                nombre: nuevoProducto.nombre,
+                cantidad: nuevoProducto.cantidad,
+                valor: nuevoProducto.valor,
+                estado: nuevoProducto.estado,
+            },
+            (response) => {
                 console.log(response.data);
                 toast.success('Producto agregado con éxito');
-            })
-            .catch(function (error) {
+            },
+            (error) => {
                 console.error(error);
-                toast.error('Error creando un Produto');
-            });
+                toast.error('Error creando el producto');
+            }
+        );
 
         setMostrarTabla(true);
     };
@@ -394,7 +389,7 @@ const FormularioCreacionProductos = ({ setMostrarTabla, listaProductos, setProdu
                         required
                     />
                 </label>
-                <label className='flex flex-col' htmlFor='marca'>
+                <label className='flex flex-col' htmlFor='estado'>
                     Dispinibilidad del Producto
                     <select
                         className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
