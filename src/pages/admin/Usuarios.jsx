@@ -1,134 +1,236 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { obtenerUsuarios, editarUsuario } from 'utils/api';
 import { nanoid } from 'nanoid';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-
+import React, { useState, useEffect, useRef } from 'react';
+import { crearVenta } from 'utils/api';
+import { obtenerVehiculos } from 'utils/api';
+import { obtenerUsuarios } from 'utils/api';
 
 const Usuarios = () => {
-    const [mostrarTabla, setMostrarTabla] = useState(true);
-    const [Usuarios, setUsuarios] = useState([]);
-    const [textoBoton, setTextoBoton] = useState('Consultar usuario');
-    const [colorBoton, setColorBoton] = useState('indigo'); //cambiar color
-    const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
-    //const [rolUsuario, setRolUduario] = useState(true);
-    
-    useEffect(() => {
-        console.log('consultaUsuario', ejecutarConsulta);
-        if (ejecutarConsulta) {
-          obtenerUsuarios(
-            (response) => {
-              console.log('la respuesta que se recibió fue', response);
-              setUsuarios(response.data);
-            },
-            (error) => {
-              console.error('Error al consultar usuario:', error);
-            }
-          );
-          setEjecutarConsulta(false);
-        }
-      }, [ejecutarConsulta]);
+  const form = useRef(null);
+  const [email, setEmail] = useState([]);
+  const [usuarios, setUsuarios] = useState([]);
+  const [usuariosTabla, setUsuariosTabla] = useState([]);
+  const [usuariosSeleccionados, setUsuariosSeleccionados] = useState([]);
 
-    useEffect(() => {
-    //obtener lista de usuarios desde el backend
-    if (mostrarTabla) {
-        setEjecutarConsulta(true);
-    }
-    }, [mostrarTabla]);
-    
-    useEffect(() => {
-        if (mostrarTabla) {
-          setTextoBoton('Buscar usuario'); //aquí debería estar al lado el input del correo 
-          setColorBoton('indigo');
-        } else {
-          setTextoBoton('Mostrar Todos los usuarios');
-          setColorBoton('green');
+  useEffect(() => {
+    // const fetchVendedores = async () => {
+    //   await obtenerUsuarios(
+    //     (response) => {
+    //       console.log('respuesta de usuarios', response);
+    //       setVendedores(response.data);
+    //     },
+    //     (error) => {
+    //       console.error(error);
+    //     }
+    //   );
+    // };
+    const traerUsuarios = async () => {
+      await obtenerUsuarios(
+        (response) => {
+          setUsuarios(response.data);
+        },
+        (error) => {
+          console.error(error);
         }
-      }, [mostrarTabla]);
-    return (
-        <div className='flex h-full w-full flex-col items-center justify-start p-8'>
-            <div className='flex flex-col w-full'>
-                <h2 className='text-3xl font-extrabold text-gray-900'>
-                    Gestión de usuarios
-                </h2>
-                <button
-                    onClick={() => {
-                        setMostrarTabla(!mostrarTabla);
-                    }}
-                    className={`text-white bg-${colorBoton}-500 p-5 rounded-full m-6 w-28 self-end`}//el color está definido arriba
-                >   
-                    {textoBoton}
-                </button>
-            </div>
-            {mostrarTabla ? (
-            <TablaUsuarios listaUsuarios={usuarios} setEjecutarConsulta={setEjecutarConsulta} />
-            ) : (
-            <FormularioCreacionUsuarios
-                setMostrarTabla={setMostrarTabla}
-                listaUsuarios={usuarios}
-                setUsuarios={setUsuarios}
-            />
-            )}
-            <ToastContainer position='bottom-center' autoClose={5000} />
-        </div>
-    )
-};
+      );
+    };
 
-const TablaUsuarios = ({ listaUsuarios, setEjecutarConsulta }) => {
-    const [busquedaUsuario, setBusquedaUsuario] = useState('');
-    const [usuariosFiltrados, setUsuariosFiltrados] = useState(listaUsuarios);
-    
-    useEffect(() => {
-        setUsuariosFiltrados(
-          listaUsuarios.filter((elemento) => {
-            return JSON.stringify(elemento).toLowerCase().includes(busquedaUsuario.toLowerCase());
-          })
-        );
-      }, [busquedaUsuario, listaUsuarios]);
-return (
-    <div className='flex flex-col items-center justify-center w-full'>
-      <input
-        value={busquedaUsuario}
-        onChange={(e) => setBusquedaUsuario(e.target.value)}
-        placeholder='Buscar'
-        className='border-2 border-gray-700 px-3 py-1 self-start rounded-md focus:outline-none focus:border-indigo-500'
-      />
-      <h2 className='text-2xl font-extrabold text-gray-800'>Todos los usuarios</h2>
-      <div className='hidden md:flex w-full'>
-        <table className='tabla'>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Apellidos</th>
-              <th>Correo electrónico</th>
-            </tr>
-            </thead>
-          <tbody>
-            {usuariosFiltrados.map((usuario) => {
-              return (
-                <FilaUsuario
-                  key={nanoid()}
-                  usuario={usuario}
-                  setEjecutarConsulta={setEjecutarConsulta}
-                />
-              );
+    //fetchVendores();
+    traerUsuarios();
+  }, []);
+
+  useEffect(() => {
+    console.log('usuarios seleccionados', usuariosSeleccionados);
+  }, [usuariosSeleccionados]);
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form.current);
+
+    const formData = {};
+    fd.forEach((value, key) => {
+      formData[key] = value;
+    });
+
+    console.log('form data', formData);
+
+    // const listaUsuarios = Object.keys(formData)
+    //   .map((k) => {
+    //     if (k.includes('usuario')) {
+    //       return usuariosTabla.filter((v) => v._id === formData[k])[0];
+    //     }
+    //     return null;
+    //   })
+    //   .filter((v) => v);
+
+    // console.log('lista antes de cantidad', listaUsuarios);
+
+    // Object.keys(formData).forEach((k) => {
+    //   if (k.includes('cantidad')) {
+    //     const indice = parseInt(k.split('_')[1]);
+    //     listaVehiculos[indice]['cantidad'] = formData[k];
+    //   }
+    };
+
+    // console.log('lista despues de cantidad', listaVehiculos);
+
+    // const datosVenta = {
+    //   vendedor: vendedores.filter((v) => v._id === formData.vendedor)[0],
+    //   cantidad: formData.valor,
+    //   vehiculos: listaVehiculos,
+    // };
+
+    //console.log('lista usuarios', listaUsuarios);
+
+    // await crearVenta(
+    //   datosVenta,
+    //   (response) => {
+    //     console.log(response);
+    //   },
+    //   (error) => {
+    //     console.error(error);
+    //   }
+    // );
+  
+  return (
+    <div className='flex h-full w-full items-center justify-center'>
+      <form ref={form} onSubmit={submitForm} className='flex flex-col h-full'>
+        <h1 className='text-3xl font-extrabold text-gray-900 my-3'>Gestión de Usuarios</h1>
+        <label className='flex flex-col' htmlFor='vendedor'>
+          <span className='text-1xl font-gray-900'>Correo Electrónico</span>
+           {email.map((el) => {
+              return <option key={nanoid()} value={el._id}>{`${el.nombre} ${el.apellido} ${el.correo}`}</option>;
             })}
-          </tbody>
-          </table>
-      </div>
-      <div className='flex flex-col w-full m-2 md:hidden'>
-        {usuariosFiltrados.map((el) => {
-          return (
-            <div className='bg-gray-400 m-2 shadow-xl flex flex-col p-2 rounded-xl'>
-              <span>{el.nombre}</span>
-              <span>{el.apellidos}</span>
-              <span>{el.correo}</span>
-            </div>
-          );
-        })}
-      </div>
+        </label>
+
+        <TablaUsuarios
+          usuarios={usuarios}
+          setUsuarios={setUsuarios}
+          setUsuariosTabla={setUsuariosTabla}
+        />
+        
+        <button
+          type='submit'
+          className='col-span-2 bg-green-400 p-2 rounded-full shadow-md hover:bg-green-600 text-white'
+        >
+          Guardar Cambios
+        </button>
+
+      {usuariosSeleccionados.map((DropDownUsuario, index) => {
+      return (
+        <div className='flex'>
+          <DropDownUsuario key={nanoid()} usuarios={usuarios} nombre={`usuario_${index}`} />
+        </div>
+      );
+    })}
+      </form>
     </div>
-);
+
+  );
+};   
+
+
+const TablaUsuarios = ({ usuarios, setUsuarios, setUsuariosTabla }) => {
+  const [usuarioAAgregar, setUsuarioAAgregar] = useState({});
+  const [filasTabla, setFilasTabla] = useState([]);
+
+  useEffect(() => {
+    console.log(usuarioAAgregar);
+  }, [usuarioAAgregar]);
+
+  useEffect(() => {
+    console.log('filasTabla', filasTabla);
+    setUsuariosTabla(filasTabla);
+  }, [filasTabla, setUsuariosTabla]);
+
+  const buscarUsuario = () => {
+    setFilasTabla([...filasTabla, usuarioAAgregar]);
+    setUsuarios(usuarios.filter((v) => v._id !== usuarioAAgregar._id));
+    setUsuarioAAgregar({});
+  };
+
+  // const eliminarVehiculo = (vehiculoAEliminar) => {
+  //   setFilasTabla(filasTabla.filter((v) => v._id !== vehiculoAEliminar._id));
+  //   setVehiculos([...vehiculos, vehiculoAEliminar]);
+  // };
+
+  return (
+    <div>
+      <div className='flex '>
+        <label className='flex flex-col' htmlFor='usuario'>
+            <input
+                className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
+                type='email'
+                name='correo'
+                placeholder="usuario@gmail.com"
+                required
+            />
+            </label>
+        <button
+          type='button'
+          onClick={() => buscarUsuario()}
+          className='col-span-2 bg-green-400 p-2 rounded-full shadow-md hover:bg-green-600 text-white'
+        >
+          Buscar Usuario
+        </button>
+      </div>
+      <table className='tabla'>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th className='hidden'>Input</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filasTabla.map((el, index) => {
+            return (
+              <tr key={nanoid()}>
+                <td>{el._id}</td>
+                <td>{el.nombre}</td>
+                <td>{el.apellido}</td>
+                <td>{el.correo}</td>
+                <td>
+                <label className='flex flex-col' htmlFor='marca'>
+                    <select
+                        className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
+                        name='estado'
+                        required
+                        defaultValue={0}
+                    >
+                        <option hidden selected>Selecciona un rol</option>
+                        <option value="Vendedor">Vendedor</option>
+                        <option value="Administrador">Administrador</option>
+                    </select>
+                </label>
+                </td>
+                <td>
+                  
+                  <label className='flex flex-col' htmlFor='marca'>
+                    <select
+                        className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
+                        name='estado'
+                        required
+                        defaultValue={0}
+                    >
+                        <option hidden selected>Selecciona un estado</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Autorizado">Autorizado</option>
+                        <option value="NoAutorizado">No Autorizado</option>
+                    </select>
+                </label>
+                </td>
+                <input hidden defaultValue={el._id} name={`vehiculo_${index}`} />
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 };
+
 export default Usuarios;

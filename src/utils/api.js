@@ -13,9 +13,26 @@ export const obtenerProductos = async (setProductos, setEjecutarConsulta) => {
     setEjecutarConsulta(false);
 };
 
-//api usuarios xD
+// CRUD PARA USUARIOS
 
 export const obtenerUsuarios = async (successCallback, errorCallback) => {
-    const options = { method: 'GET', url: 'http://localhost:5000/usuarios/' };
+  const options = { method: 'GET', url: 'http://localhost:5000/usuarios' };
+  await axios.request(options).then(successCallback).catch(errorCallback);
+};
+
+// CRUD DE VENTAS
+
+export const crearVenta = async (data, successCallback, errorCallback) => {
+  const options = {
+    method: 'POST',
+    url: 'http://localhost:5000/ventas',
+    headers: { 'Content-Type': 'application/json' },
+    data,
+  };
+  await axios.request(options).then(successCallback).catch(errorCallback);
+};
+
+export const obtenerVehiculos = async (successCallback, errorCallback) => {
+    const options = { method: 'GET', url: 'http://localhost:5000/vehiculos/' };
     await axios.request(options).then(successCallback).catch(errorCallback);
-};  
+  };
