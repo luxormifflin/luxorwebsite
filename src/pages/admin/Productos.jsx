@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import {nanoid} from 'nanoid';
 import {Dialog, Tooltip} from '@material-ui/core';
 import { obtenerProductos, crearProducto, editarProducto, eliminarProducto } from 'utils/api';
+import ReactLoading from 'react-loading';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Productos = () => {
@@ -11,21 +12,26 @@ const Productos = () => {
     const [textoBoton, setTextoBoton] = useState('Crear Nuevo Producto');
     const [colorBoton, setColorBoton] = useState('indigo');
     const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
-
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
-        console.log('consulta', ejecutarConsulta);
-        if (ejecutarConsulta) {
-            obtenerProductos(
+        const fetchProductos = async ()=>{
+            setLoading(true);
+            await obtenerProductos(
                 (response) => {
                     console.log('la respuesta que se recibio fue', response);
                     setProductos(response.data);
                     setEjecutarConsulta(false);
-        },
+                    setLoading(false);
+                },
             (error) => {
                 console.log('salió un error', error);
+                setLoading(false);
             }
         );
-        
+    };
+    console.log('consulta', ejecutarConsulta );
+    if (ejecutarConsulta) {
+        fetchProductos();
     } 
 }, [ejecutarConsulta]);
 
@@ -61,7 +67,11 @@ const Productos = () => {
                 </button>
             </div>
             {mostrarTabla ? (
-                <TablaProductos listaProductos={productos} setEjecutarConsulta={setEjecutarConsulta} />
+                <TablaProductos 
+                loading={loading}
+                listaProductos={productos} 
+                setEjecutarConsulta={setEjecutarConsulta} 
+                />
             ) : (
                 <FormularioCreacionProductos
                     setMostrarTabla={setMostrarTabla}
@@ -73,7 +83,7 @@ const Productos = () => {
         </div>
     );
 };
-const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
+const TablaProductos = ({ loading, listaProductos, setEjecutarConsulta }) => {
     const [busqueda, setBusqueda] = useState('');
     const [productosFiltrados, setProductosFiltrados] = useState(listaProductos);
     useEffect(() => {
@@ -94,7 +104,10 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
             />
             <h2 className='text-2xl font-extrabold text-gray-800'>Todos los Productos</h2>
             <div className='hidden md:flex w-full'>
-                <table className='tabla'>
+                {loading ? (
+                    <ReactLoading type='cylon' color='#abc123' height={667} width={375} />
+                ) : (
+                    <table className='tabla'>
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -118,6 +131,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
                         })}
                     </tbody>
                 </table>
+                )}
             </div>
             <div className='flex flex-col w-full m-2 md:hidden'>
                 {productosFiltrados.map((el) => {

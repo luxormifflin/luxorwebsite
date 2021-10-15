@@ -17,7 +17,8 @@ function App() {
         <Auth0Provider
             domain='misiontic-luxorwebsite.us.auth0.com'
             clientId='GnHNtwNGmXTgSZhJevVQySD6P7fvhAWi'
-            redirectUri={window.location.origin}
+            redirectUri='http://localhost:3000/admin'
+            audience='api-autenticacion-luxorwebsite-mintic'
             >
         <Router>
             <Switch>
