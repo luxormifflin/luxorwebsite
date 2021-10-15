@@ -1,7 +1,5 @@
 import { nanoid } from 'nanoid';
 import React, { useState, useEffect, useRef } from 'react';
-import { crearVenta } from 'utils/api';
-import { obtenerVehiculos } from 'utils/api';
 import { obtenerUsuarios } from 'utils/api';
 
 const Usuarios = () => {
@@ -10,39 +8,54 @@ const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [usuariosTabla, setUsuariosTabla] = useState([]);
   const [usuariosSeleccionados, setUsuariosSeleccionados] = useState([]);
+  const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [textoBoton, setTextoBoton] = useState('Crear Nuevo Usuario');
+  const [colorBoton, setColorBoton] = useState('indigo');
+  const [mostrarTabla, setMostrarTabla] = useState(true);
+  
 
   useEffect(() => {
-    // const fetchVendedores = async () => {
-    //   await obtenerUsuarios(
-    //     (response) => {
-    //       console.log('respuesta de usuarios', response);
-    //       setVendedores(response.data);
-    //     },
-    //     (error) => {
-    //       console.error(error);
-    //     }
-    //   );
-    // };
+    
     const traerUsuarios = async () => {
+      setLoading(true);
       await obtenerUsuarios(
         (response) => {
+          console.log('la respuesta que se recibio fue', response);
           setUsuarios(response.data);
+          setEjecutarConsulta(false);
+          setLoading(false);
         },
         (error) => {
           console.error(error);
+          setLoading(false);
         }
       );
     };
-
-    //fetchVendores();
-    traerUsuarios();
-  }, []);
+    console.log('consulta', ejecutarConsulta);
+    if (ejecutarConsulta) {
+      traerUsuarios();
+    }
+  }, [ejecutarConsulta]);
 
   useEffect(() => {
-    console.log('usuarios seleccionados', usuariosSeleccionados);
-  }, [usuariosSeleccionados]);
+    //obtener lista de usuarios desde el backend
+    if (mostrarTabla) {
+      setEjecutarConsulta(true);
+    }
+  }, [mostrarTabla]);
 
-  const submitForm = async (e) => {
+  useEffect(() => {
+    if (mostrarTabla) {
+      setTextoBoton('Mostrar lista de usuarios');
+      setColorBoton('indigo');
+    } else {
+      setTextoBoton('Buscar un usuario');
+      setColorBoton('green');
+    }
+  }, [mostrarTabla]);
+     
+   const submitForm = async (e) => {
     e.preventDefault();
     const fd = new FormData(form.current);
 
@@ -51,45 +64,8 @@ const Usuarios = () => {
       formData[key] = value;
     });
 
-    console.log('form data', formData);
-
-    // const listaUsuarios = Object.keys(formData)
-    //   .map((k) => {
-    //     if (k.includes('usuario')) {
-    //       return usuariosTabla.filter((v) => v._id === formData[k])[0];
-    //     }
-    //     return null;
-    //   })
-    //   .filter((v) => v);
-
-    // console.log('lista antes de cantidad', listaUsuarios);
-
-    // Object.keys(formData).forEach((k) => {
-    //   if (k.includes('cantidad')) {
-    //     const indice = parseInt(k.split('_')[1]);
-    //     listaVehiculos[indice]['cantidad'] = formData[k];
-    //   }
+    console.log('form data', formData);  
     };
-
-    // console.log('lista despues de cantidad', listaVehiculos);
-
-    // const datosVenta = {
-    //   vendedor: vendedores.filter((v) => v._id === formData.vendedor)[0],
-    //   cantidad: formData.valor,
-    //   vehiculos: listaVehiculos,
-    // };
-
-    //console.log('lista usuarios', listaUsuarios);
-
-    // await crearVenta(
-    //   datosVenta,
-    //   (response) => {
-    //     console.log(response);
-    //   },
-    //   (error) => {
-    //     console.error(error);
-    //   }
-    // );
   
   return (
     <div className='flex h-full w-full items-center justify-center'>
@@ -115,19 +91,11 @@ const Usuarios = () => {
           Guardar Cambios
         </button>
 
-      {usuariosSeleccionados.map((DropDownUsuario, index) => {
-      return (
-        <div className='flex'>
-          <DropDownUsuario key={nanoid()} usuarios={usuarios} nombre={`usuario_${index}`} />
-        </div>
-      );
-    })}
       </form>
     </div>
 
   );
 };   
-
 
 const TablaUsuarios = ({ usuarios, setUsuarios, setUsuariosTabla }) => {
   const [usuarioAAgregar, setUsuarioAAgregar] = useState({});
@@ -143,15 +111,10 @@ const TablaUsuarios = ({ usuarios, setUsuarios, setUsuariosTabla }) => {
   }, [filasTabla, setUsuariosTabla]);
 
   const buscarUsuario = () => {
-    setFilasTabla([...filasTabla, usuarioAAgregar]);
+    setFilasTabla([ usuarioAAgregar]);
     setUsuarios(usuarios.filter((v) => v._id !== usuarioAAgregar._id));
     setUsuarioAAgregar({});
   };
-
-  // const eliminarVehiculo = (vehiculoAEliminar) => {
-  //   setFilasTabla(filasTabla.filter((v) => v._id !== vehiculoAEliminar._id));
-  //   setVehiculos([...vehiculos, vehiculoAEliminar]);
-  // };
 
   return (
     <div>
