@@ -1,7 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import Logo from 'media/logo.png';
+import { useAuth0 } from "@auth0/auth0-react";
+
+
 const Navbar = () => {
+    const { loginWithRedirect } = useAuth0();
     return (
         <nav className='bg-white'>
         <div className='flex w-full mx-auto justify-between my-3 items-center'>
@@ -12,11 +15,11 @@ const Navbar = () => {
             <li className='bg-gray-200 p-0 m-1 rounded-t-lg'><a href="usuariosMain.html">Gestión de Usuarios & Roles</a></li>
             <li className='px-3'>
                 <div className='flex flex-end w-full items-end'>
-                <Link to='/login'>
-                <button className='bg-gray-600 p-1 text-white rounded-lg shadow-md hover:bg-green-200'>
+                <button 
+                onClick={() => loginWithRedirect()}
+                className='bg-gray-600 p-1 text-white rounded-lg shadow-md hover:bg-green-200'>
                 Iniciar Sesión
                 </button>
-                </Link>
                 </div>
             </li>
             </ul>
