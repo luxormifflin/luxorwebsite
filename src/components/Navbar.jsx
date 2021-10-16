@@ -9,10 +9,10 @@ const Navbar = () => {
         <nav className='bg-white'>
         <div className='flex w-full mx-auto justify-between my-3 items-center'>
             <ul className='flex justify-between items-start'>
-            <li className='bg-gray-200 p-0 m-1 rounded-t-lg'><a href="principal.html">Principal</a></li>
-            <li className='bg-gray-200 p-0 m-1 rounded-t-lg'><a href="ventasMain.html">Gestión de Ventas</a></li>
-            <li className='bg-gray-200 p-0 m-1 rounded-t-lg'><a href="productosMain.html">Gestión de Productos</a></li>
-            <li className='bg-gray-200 p-0 m-1 rounded-t-lg'><a href="usuariosMain.html">Gestión de Usuarios & Roles</a></li>
+            <li className='bg-gray-200 p-0 m-1 rounded-t-lg'><a href='/'>Principal</a></li>
+            <li className='bg-gray-200 p-0 m-1 rounded-t-lg'><a href='/admin/ventas'>Gestión de Ventas</a></li>
+            <li className='bg-gray-200 p-0 m-1 rounded-t-lg'><a href='/admin/productos'>Gestión de Productos</a></li>
+            <li className='bg-gray-200 p-0 m-1 rounded-t-lg'><a href='/admin/usuarios'>Gestión de Usuarios & Roles</a></li>
             <li className='px-3'>
                 <div className='flex flex-end w-full items-end'>
                 <button 
