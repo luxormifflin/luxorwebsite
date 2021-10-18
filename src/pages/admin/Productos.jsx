@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import {nanoid} from 'nanoid';
 import {Dialog, Tooltip} from '@material-ui/core';
 import { obtenerProductos, crearProducto, editarProducto, eliminarProducto } from 'utils/api';
 import ReactLoading from 'react-loading';
 import 'react-toastify/dist/ReactToastify.css';
+import PrivateComponent from 'components/PrivateComponent';
 
 const Productos = () => {
     const [mostrarTabla, setMostrarTabla] = useState(true);
@@ -49,8 +50,7 @@ const Productos = () => {
             setTextoBoton('Mostrar todos los Productos');
             setColorBoton("gray")
         }
-    }, [mostrarTabla])
-
+    }, [mostrarTabla]);
     return (
         <div className='flex h-full w-full flex-col items-center justify-start p-8'>
             <div className='flex flex-col w-full'>
@@ -116,7 +116,9 @@ const TablaProductos = ({ loading, listaProductos, setEjecutarConsulta }) => {
                             <th>Cantidad</th>
                             <th>Valor</th>
                             <th>Estado</th>
+                            <PrivateComponent roleList={['admin']}>
                             <th>Acciones</th>
+                            </PrivateComponent>
                         </tr>
                     </thead>
                     <tbody>
@@ -266,6 +268,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
                     <td>{producto.estado}</td>
                 </>
             )}
+            <PrivateComponent roleList={['admin']}>
             <td>
                 <div className='flex w-full justify-around'>
                     {edit ? (
@@ -322,6 +325,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
                     </div>
                 </Dialog>
             </td>
+            </PrivateComponent>
         </tr>
     );
 };
