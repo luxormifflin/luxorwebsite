@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Registro from 'pages/auth/Registro';
 import Admin from 'pages/admin/Index';
 import Productos from 'pages/admin/Productos';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'styles/styles.css';
 import Index from 'pages/Index';
 import PublicLayout from 'layouts/PublicLayout';

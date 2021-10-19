@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from 'media/logo.png';
 import { useAuth0 } from "@auth0/auth0-react";
+import TriggerDarkMode from './TriggerDarkMode';
 
 
 const Navbar = () => {
@@ -13,6 +14,9 @@ const Navbar = () => {
             <li className='bg-gray-200 p-0 m-1 rounded-t-lg'><a href='/admin/ventas'>Gestión de Ventas</a></li>
             <li className='bg-gray-200 p-0 m-1 rounded-t-lg'><a href='/admin/productos'>Gestión de Productos</a></li>
             <li className='bg-gray-200 p-0 m-1 rounded-t-lg'><a href='/admin/usuarios'>Gestión de Usuarios & Roles</a></li>
+            <li>
+                <TriggerDarkMode />
+            </li>
             <li className='px-3'>
                 <div className='flex flex-end w-full items-end'>
                 <button 

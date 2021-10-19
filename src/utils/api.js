@@ -61,7 +61,8 @@ export const obtenerDatosUsuario = async (successCallback, errorCallback) => {
         url: 'http://localhost:5000/usuarios/self', //ruta dummie, mi ruta, info personal
         headers: {
             Authorization: getToken(), //3. Enviarle el token al backend
-        } };
+        },
+    };
     await axios.request(options).then(successCallback).catch(errorCallback);
 };
 export const editarUsuario = async (id, data, successCallback, errorCallback) => {
