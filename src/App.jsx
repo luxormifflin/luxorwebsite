@@ -35,7 +35,7 @@ function App() {
                     <DarkModeContext.Provider value={{ darkMode, setDarkMode }}>
                         <Router>
                             <Switch>
-                                <Route path={['/admin', '/admin/productos', '/admin/usuarios', 'admin/ventas']}>
+                                <Route path={['/admin', '/admin/productos', '/admin/usuarios', '/admin/ventas']}>
                                     <PrivateLayout>
                                         <Switch>
                                             <Route path='/admin/ventas'>
