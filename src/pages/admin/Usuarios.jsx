@@ -19,6 +19,7 @@ const Usuarios = () => {
        };
        traerUsuarios()
     }, []);
+
     return (
         <div>
           <div className='text-3xl font-extrabold text-gray-900'>Administración de usuarios</div>
@@ -29,6 +30,7 @@ const Usuarios = () => {
                 <th>Email</th>
                 <th>Estado</th>
                 <th>Rol</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import {nanoid} from 'nanoid';
 import {Dialog, Tooltip} from '@material-ui/core';
@@ -50,8 +50,7 @@ const Productos = () => {
             setTextoBoton('Mostrar todos los Productos');
             setColorBoton("gray")
         }
-    }, [mostrarTabla])
-
+    }, [mostrarTabla]);
     return (
         <div className='flex h-full w-full flex-col items-center justify-start p-8'>
             <div className='flex flex-col w-full'>
@@ -269,8 +268,8 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
                     <td>{producto.estado}</td>
                 </>
             )}
-             <PrivateComponent roleList={['admin']}>
-            <td>             
+            <PrivateComponent roleList={['admin']}>
+            <td>
                 <div className='flex w-full justify-around'>
                     {edit ? (
                         <>
@@ -303,7 +302,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
                             </Tooltip>
                         </>
                     )}
-                </div>         
+                </div>
                 <Dialog open={openDialog}>
                     <div className='p-8 flex flex-col'>
                         <h1 className='text-gray-900 text-2xl font-bold'>

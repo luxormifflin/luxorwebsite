@@ -1,7 +1,7 @@
 import Sidebar from 'components/Sidebar'
 import SidebarResponsive from 'components/sidebarResponsive'
 import React, {useEffect, useState} from 'react'
-import PrivateRoute from 'components/PrivateRoute';
+//import PrivateRoute from 'components/PrivateRoute';
 import { useAuth0 } from '@auth0/auth0-react';
 import ReactLoading from 'react-loading';
 import { obtenerDatosUsuario } from 'utils/api';
@@ -27,7 +27,7 @@ const PrivateLayout = ({ children }) => {
             const accessToken = await getAccessTokenSilently({
                 audience: `api-autenticacion-luxorwebsite-mintic`,
             });
-            // 2. RECIBIR TOKEN DE AUTH0
+            // 2. Recibir token de auth0
             localStorage.setItem('token', accessToken);
             console.log(accessToken)
             //3. Enviarle el token al backend
@@ -47,7 +47,7 @@ const PrivateLayout = ({ children }) => {
         if (isAuthenticated) {
             fetchAuth0Token();
         }
-    }, [isAuthenticated, getAccessTokenSilently]);
+    }, [isAuthenticated, getAccessTokenSilently, logout, setUserData]);
 
     if (isLoading || loadingUserInformation)
     return <ReactLoading type='cylon' color='#abc123' height={667} width={375} />;
@@ -71,4 +71,4 @@ const PrivateLayout = ({ children }) => {
     );
 };
 
-export default PrivateLayout
+export default PrivateLayout;
