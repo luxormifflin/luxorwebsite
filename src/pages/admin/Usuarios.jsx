@@ -2,9 +2,16 @@ import { nanoid } from 'nanoid';
 import React, { useState, useEffect } from 'react';
 import { editarUsuario } from 'utils/api';
 import { obtenerUsuarios } from 'utils/api';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Usuarios = () => {
     const [usuarios, setUsuarios] = useState ([]);
+  //   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+  //   const [infoNuevoUsuario, setInfoNuevoUsuario] = useState({
+      
+  //     rol: producto.rol,
+  //     estado: producto.estado,
+  // });
     useEffect(() => {
        const traerUsuarios = async() =>{
            await obtenerUsuarios(
@@ -20,6 +27,33 @@ const Usuarios = () => {
        traerUsuarios()
     }, []);
 
+
+    //estado para guardar usuario
+
+    // const guardarUsuario = async () => {
+    //   //enviar la info al backend
+
+    //   await editarUsuario(
+    //       usuario._id,
+    //       {
+    //           rol: infoNuevoUsuario.rol,
+    //           estado: infoNuevoUsuario.estado,
+    //       },
+    //       (response) => {
+    //           console.log(response.data);
+    //           toast.success('Usuario modificado con éxito');
+    //           setEdit(false);
+    //           setEjecutarConsulta(true);
+    //       },
+    //       (error) => {
+    //           toast.error('Error modificando el usuario');
+    //           console.error(error);
+    //       }
+    //     );
+    // };
+
+//termina estado para guardar usuario
+
     return (
         <div>
           <div className='text-3xl font-extrabold text-gray-900'>Administración de usuarios</div>
@@ -31,6 +65,7 @@ const Usuarios = () => {
                 <th>Estado</th>
                 <th>Rol</th>
                 <th>Acciones</th>
+
               </tr>
             </thead>
             <tbody>
@@ -45,6 +80,29 @@ const Usuarios = () => {
                     <td>
                       <RolesUsuario user={user} />
                     </td>
+
+{/* columna de acciones */}
+
+                    {/* <td>
+                        <div className='flex w-full justify-around'>
+                            {edit ? (
+                                <>
+                                    <Tooltip title='Confirmar Edición' arrow>
+                                        <i
+                                            onClick={() => guardarUsuario()}
+                                            className='fas fa-check text-green-700 hover:text-green-500'
+                                        />
+                                    </Tooltip>            
+                                </>
+                            ) : (
+                                <>
+                                </>
+                            )}
+                        </div>  
+                    </td> */}
+
+{/* se termina columna de acciones */}
+
                   </tr>
                 );
               })}
