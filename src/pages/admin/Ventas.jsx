@@ -99,8 +99,8 @@ const Ventas = () => {
                     <span className='text-2xl font-gray-900'>Valor Total Venta</span>
                     <input
                         className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
-                        type='text'
-                        readonly= 'readonly'
+                        type='number'
+                        //readonly= 'readonly'
                         name='valor'
                         // value={sumaTotal(productos)}
                         required
