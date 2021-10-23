@@ -8,26 +8,27 @@ const getToken = () => {
 };
 
 export const obtenerProductos = async (successCallback, errorCallback) => {
-    const options = { method: 'GET', 
-    url: `${baseURL}/productos/`,
-    headers: {
+    const options = { 
+        method: 'GET', 
+        url: `${baseURL}/productos/`,
+        headers: {
         Authorization: getToken(),
     },
 };
     await axios.request(options).then(successCallback).catch(errorCallback); 
 };
 
-export const crearProducto = (data, successCallback, errorCallback) => {
+export const crearProducto = async (data, successCallback, errorCallback) => {
     const options = {
         method: 'POST',
         url: `${baseURL}/productos/`,
         headers: {'Content-Type': 'application/json', Authorization: getToken()},   
         data,
     };
-    axios.request(options).then(successCallback).catch(errorCallback);
+    await axios.request(options).then(successCallback).catch(errorCallback);
 };
 
-export const editarProducto = (id, data, successCallback, errorCallback) => {
+export const editarProducto = async (id, data, successCallback, errorCallback) => {
     console.log("editar producto", id, data)
     const options = { 
         method: 'PATCH',
@@ -36,7 +37,7 @@ export const editarProducto = (id, data, successCallback, errorCallback) => {
         data,
     };
     console.log('opcionesssssssssssss', options)
-    axios.request(options).then(successCallback).catch(errorCallback);
+    await axios.request(options).then(successCallback).catch(errorCallback);
 };
 
 export const eliminarProducto = async (id, successCallback, errorCallback) => {

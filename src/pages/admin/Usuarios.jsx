@@ -1,3 +1,4 @@
+//import PrivateComponent from 'components/PrivateComponent';
 import { nanoid } from 'nanoid';
 import React, { useState, useEffect } from 'react';
 import { editarUsuario } from 'utils/api';
@@ -22,7 +23,7 @@ const Usuarios = () => {
               (err) => {
                 console.log(err);
            }
-           );
+         );
        };
        traerUsuarios()
     }, []);
@@ -56,6 +57,7 @@ const Usuarios = () => {
 
     return (
         <div>
+
           <div className='text-3xl font-extrabold text-gray-900'>Administración de usuarios</div>
           <table className='tabla'>
             <thead>
@@ -64,7 +66,7 @@ const Usuarios = () => {
                 <th>Email</th>
                 <th>Estado</th>
                 <th>Rol</th>
-                <th>Acciones</th>
+                {/* <th>Acciones</th> */}
 
               </tr>
             </thead>
@@ -121,10 +123,10 @@ const RolesUsuario = ({ user }) => {
             user._id,
             { rol },
             (res) => {
-            console.log(res);
+              console.log(res);
             },
             (err) => {
-            console.error(err);
+              console.error(err);
             }
         );
     };
