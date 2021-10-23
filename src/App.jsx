@@ -27,7 +27,7 @@ function App() {
         <Auth0Provider
             domain='misiontic-luxorwebsite.us.auth0.com'
             clientId='GnHNtwNGmXTgSZhJevVQySD6P7fvhAWi'
-            redirectUri='http://localhost:3000/admin'
+            redirectUri='https://ancient-retreat-81690.herokuapp.com/admin'
             audience='api-autenticacion-luxorwebsite-mintic'
         >
         <div className= 'App'>
