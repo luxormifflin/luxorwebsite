@@ -14,24 +14,26 @@ export const obtenerProductos = async (successCallback, errorCallback) => {
     await axios.request(options).then(successCallback).catch(errorCallback); 
 };
 
-export const crearProducto = async (data, successCallback, errorCallback) => {
+export const crearProducto = (data, successCallback, errorCallback) => {
     const options = {
         method: 'POST',
         url: 'http://localhost:5000/productos/',
-        headers: {'Content-Type': 'application/json', Authorization: getToken()},
+        headers: {'Content-Type': 'application/json', Authorization: getToken()},   
         data,
     };
-    await axios.request(options).then(successCallback).catch(errorCallback);
+    axios.request(options).then(successCallback).catch(errorCallback);
 };
 
-export const editarProducto = async (id, data, successCallback, errorCallback) => {
+export const editarProducto = (id, data, successCallback, errorCallback) => {
+    console.log("editar producto", id, data)
     const options = { 
         method: 'PATCH',
         url: `http://localhost:5000/productos/${id}/`,
         headers: {'Content-Type':'aplication/json', Authorization: getToken() },
         data,
     };
-    await axios.request(options).then(successCallback).catch(errorCallback);
+    console.log('opcionesssssssssssss', options)
+    axios.request(options).then(successCallback).catch(errorCallback);
 };
 
 export const eliminarProducto = async (id, successCallback, errorCallback) => {

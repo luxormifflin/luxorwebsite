@@ -102,6 +102,7 @@ const Ventas = () => {
                         type='text'
                         readonly= 'readonly'
                         name='valor'
+                        // value={sumaTotal(productos)}
                         required
                     />
                 </label>
@@ -116,6 +117,7 @@ const Ventas = () => {
     );
 };
 
+
 const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
     const [productoAAgregar, setProductoAAgregar] = useState({});
     const [filasTabla, setFilasTabla] = useState([]);
@@ -123,6 +125,20 @@ const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
     useEffect(() => {
         setProductosTabla(filasTabla);
     }, [filasTabla, setProductosTabla]);
+
+    useEffect(() => {
+        // const sumaTotal = (productos) => {
+        //     let total = 0
+        //     for (const producto of productos) {
+        //         total = total + parseFloat(producto.valor)
+    
+        //     }
+        //     return total;
+            
+            
+        // };
+        //for each
+    }, [filasTabla]);
 
     const agregarNuevoProducto = () => {
         setFilasTabla([...filasTabla, productoAAgregar]);
@@ -136,16 +152,31 @@ const TablaProductos = ({ productos, setProductos, setProductosTabla }) => {
     };
 
     const modificarProducto = (producto, cantidadVender) => {
+        
         setFilasTabla(
             filasTabla.map((ft) => {
                 if (ft._id === producto.id) {
                     ft.cantidadVender = cantidadVender;
-                    ft.total = producto.valor * cantidadVender;
+                    ft.total = parseFloat(producto.valor) * parseFloat(cantidadVender);
+
+                    
                 }
+                // console.log(total)
                 return ft;
             })
         );
-    };
+    }; 
+    
+    
+
+
+
+    //no sabemos cómo usar el parsefloat
+    //recorrer variable filas tabla y donde queda guardardo el total se ejecute la suma, con un useeffect que este pendiente de los cambios de filas tabla
+    //para recorrer se hace con un for each
+    //filastabla.total son las filas de los totales de los pdtos, la idea es sumarlos
+
+
 
     return (
         <div>

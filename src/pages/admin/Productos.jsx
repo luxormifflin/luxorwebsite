@@ -152,7 +152,7 @@ const TablaProductos = ({ loading, listaProductos, setEjecutarConsulta }) => {
     );
 };
 
-const FilaProducto = ({ producto, setEjecutarConsulta }) => {
+const FilaProducto = ({ key, producto, setEjecutarConsulta }) => {
     const [edit, setEdit] = useState(false);
     const [openDialog, setOpenDialog] = useState(false);
     const [infoNuevoProducto, setInfoNuevoProducto] = useState({
@@ -163,6 +163,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
         valor: producto.valor,
         estado: producto.estado,
     });
+    console.log('infoNuevoProducto', infoNuevoProducto)
 
     const actualizarProducto = async () => {
         //enviar la info al backend
@@ -178,6 +179,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
             },
             (response) => {
                 console.log(response.data);
+                //en response solo viene la respuesta del backend y no sé si está buena o no
                 toast.success('Producto modificado con éxito');
                 setEdit(false);
                 setEjecutarConsulta(true);
