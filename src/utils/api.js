@@ -53,7 +53,7 @@ export const eliminarProducto = async (id, successCallback, errorCallback) => {
 export const obtenerUsuarios = async (successCallback, errorCallback) => {
     const options = { 
         method: 'GET', 
-        url: `${baseURL}/usuarios`,
+        url: `${baseURL}/usuarios/`,
         headers: {
             Authorization: getToken(),
         } };
@@ -62,7 +62,7 @@ export const obtenerUsuarios = async (successCallback, errorCallback) => {
 export const obtenerDatosUsuario = async (successCallback, errorCallback) => {
     const options = { 
         method: 'GET', 
-        url: `${baseURL}/usuarios/self`, //ruta dummie, mi ruta, info personal
+        url: `${baseURL}/usuarios/self/`, //ruta dummie, mi ruta, info personal
         headers: {
             Authorization: getToken(), //3. Enviarle el token al backend
         } };
@@ -82,7 +82,7 @@ export const editarUsuario = async (id, data, successCallback, errorCallback) =>
 export const crearVenta = async (data, successCallback, errorCallback) => {
     const options = {
         method: 'POST',
-        url: `${baseURL}/ventas`,
+        url: `${baseURL}/ventas/git a`,
         headers: { 'Content-Type': 'application/json' },
         data,
     };
